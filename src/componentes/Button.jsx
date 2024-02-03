@@ -10,10 +10,19 @@ const Button_v_1 = ({children}) => {
 
 const Button_v_2 = ({children}) => {
   return (
-    <button>
+    <button className="Button_v_2">
       {children}
     </button>
   );
 };
 
-export {Button_v_1,Button_v_2};
+const Button_v_3 = ({children}) => {
+  return (
+    <button className="Button_v_3">
+      {children}
+    </button>
+  );
+};
+
+
+export {Button_v_1,Button_v_2,Button_v_3};

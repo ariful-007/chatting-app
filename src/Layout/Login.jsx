@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
+import { GrLogin } from "react-icons/gr";
 import { Link, useNavigate,} from "react-router-dom";
 import { IoEyeOff ,IoEye } from "react-icons/io5";
 import { toast } from 'react-toastify';
@@ -8,10 +8,6 @@ import { ThreeDots } from 'react-loader-spinner'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { userLoginInfo } from "../slices/userSlice";
-
-
-
-
 
 const Login = () => {
 const navigate = useNavigate()
@@ -92,7 +88,7 @@ const heandelSubmit = (e) => {
   return (
     <div className="flex h-screen flex-1 flex-col justify-center lg:px-8  bg-slate-800">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <IoChatboxEllipsesOutline className="mx-auto h-10 w-auto text-sky-600" />
+        <GrLogin className="mx-auto h-10 w-auto text-sky-600" />
         <h2 className="mt-5 text-center uppercase text-2xl font-bold leading-9 tracking-tight text-white">
           Login 
         </h2>
