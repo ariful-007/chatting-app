@@ -1,6 +1,5 @@
 
-
-const Button_v_1 = ({children}) => {
+const Button_v_1 = ({ children }) => {
   return (
     <button className="Button_v_1">
       {children}
@@ -8,7 +7,7 @@ const Button_v_1 = ({children}) => {
   );
 };
 
-const Button_v_2 = ({children}) => {
+const Button_v_2 = ({ children }) => {
   return (
     <button className="Button_v_2">
       {children}
@@ -16,7 +15,7 @@ const Button_v_2 = ({children}) => {
   );
 };
 
-const Button_v_3 = ({children}) => {
+const Button_v_3 = ({ children }) => {
   return (
     <button className="Button_v_3">
       {children}
@@ -24,5 +23,4 @@ const Button_v_3 = ({children}) => {
   );
 };
 
-
-export {Button_v_1,Button_v_2,Button_v_3};
+export { Button_v_1, Button_v_2, Button_v_3 };

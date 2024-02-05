@@ -1,30 +1,34 @@
 
 import './App.css'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
-import Registration from './Layout/Registration';
-import Login from './Layout/Login';
+import Registration from './Pages/Registration';
+import Login from './Pages/Login';
 import firebaseConfig from './firebase.Config';
 import ForgotPassword from './componentes/ForgotPassword';
-import Home from './componentes/Home';
+import Home from './home/Home';
+
+
 
 function App() {
   const router = createBrowserRouter([
     {
-      path:'/',
+      path: "/",
       element:<Registration/>
     },
     {
-      path:'/login',
+      path: "/login",
       element:<Login/>
     },
     {
-      path:'/forgotpassword',
+      path: "/forgotpassword",
       element:<ForgotPassword/>
     },
     {
-      path:'/home',
+      path:"/home",
       element:<Home/>
     }
+    
+
   ])
 
   return (
