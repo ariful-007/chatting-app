@@ -1,8 +1,10 @@
 import React from 'react';
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 const UserList = () => {
   return (
     <div className="all_items ">
+      
       <div className="all_item-1">
         <div className="all_item-2 ">
           <img src="" alt="" />

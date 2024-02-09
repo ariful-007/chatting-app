@@ -4,7 +4,6 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import GroupList from "../home/GroupList";
-import UserList from "../home/UserList";
 import FriendList from "../home/FriendList";
 import FriendRequest from "../home/FriendRequest";
 import MyGroup from "../home/MyGroup";
@@ -50,27 +49,8 @@ const Home = () => {
         </div>
 
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>User List</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
+        
+        
         </div>
 
         <div className="main_item-1">
