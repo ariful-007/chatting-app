@@ -5,7 +5,7 @@ import {
   IoNotifications,
   IoLogOut,
 } from "react-icons/io5";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginInfo } from "../slice/userSlice";
 import { FaCloudUploadAlt } from "react-icons/fa";
@@ -77,9 +77,11 @@ const Navbar = () => {
         const message4 = cropperRef.current?.cropper
           .getCroppedCanvas()
           .toDataURL();
-        uploadString(storageRef, message4, "data_url").then((snapshot) => {
+          uploadString(storageRef, message4, "data_url").then((snapshot) => {
           getDownloadURL(storageRef).then((downloadURL) => {
-            console.log(downloadURL);
+            updateProfile(auth.currentUser,{
+              photoURL: downloadURL
+            })
             dispatch(userLoginInfo({ ...data, photoURL: downloadURL }));
             localStorage.setItem(
               "user",

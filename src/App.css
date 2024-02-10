@@ -136,36 +136,25 @@
   @apply w-full h-[430px] bg-slate-300 overflow-y-scroll mb-3 border border-spacing-4  rounded-md sm:w-[50%] md:w-[100%] lg:w-[32%]
 }
 
-.main_item .main_item-1 .item_text {
-  @apply bg-gray-200 p-2 shadow-md flex justify-between items-center sticky top-0 left-0
-}
-
-.main_item .main_item-1 .item_text h2 {
-  @apply text-xl font-semibold capitalize text-black
-}
-
-.main_item .main_item-1 .item_text p svg {
-  @apply text-black text-lg font-bold
-}
-
 /* =======home item end========= */
 
 /* =======all item list start======= */
-.all_items{
-  @apply flex justify-between items-center p-2
+#all-item .main{
+  @apply flex justify-between items-center bg-gray-200 p-2 shadow-md sticky top-0 left-0
+}
+#all-item .main h2{
+  @apply text-xl font-semibold capitalize text-black 
 }
 
-.all_items .all_item-1 {
-  @apply flex gap-4 items-center
-}
-
-.all_items .all_item-1 .all_item-2 {
+#all-item .img {
   @apply w-[60px] h-[60px] rounded-full bg-sky-500 overflow-hidden
 }
 
-.all_items .all_item_text h1 {
-  @apply text-lg font-semibold text-gray-900
+#all-item  h1{
+  @apply text-xl font-bold text-gray-900 capitalize
 }
+
+
 
 
 

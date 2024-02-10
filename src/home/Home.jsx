@@ -8,6 +8,7 @@ import FriendList from "../home/FriendList";
 import FriendRequest from "../home/FriendRequest";
 import MyGroup from "../home/MyGroup";
 import BlockedUser from "../home/BlockedUser";
+import UserList from "./UserList";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,135 +25,30 @@ const Home = () => {
       <Navbar />
       <div className="main_item">
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>Group List</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-          <GroupList />
-        </div>
-
-        <div className="main_item-1">
         
+          <GroupList/>
         
         </div>
 
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>Friend</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
-          <FriendList />
+          <UserList/>
+        </div>
+
+        <div className="main_item-1">
           <FriendList />
         </div>
 
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>Friend Request</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
-          <FriendRequest />
           <FriendRequest />
         </div>
 
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>My Group</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
-          <MyGroup />
+        <MyGroup/>
         </div>
 
         <div className="main_item-1">
-          <div className="item_text">
-            <h2>Blocked User</h2>
-            <p>
-              {" "}
-              <BiDotsVerticalRounded />{" "}
-            </p>
-          </div>
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
-          <BlockedUser />
+        <BlockedUser />
+        
         </div>
       </div>
     </div>

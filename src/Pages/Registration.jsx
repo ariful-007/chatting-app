@@ -9,10 +9,12 @@ import {
 } from "firebase/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getDatabase, ref, set } from "firebase/database";
 
 const Registration = () => {
   const auth = getAuth();
   const navigate = useNavigate();
+  const db = getDatabase();
   // gate input start
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -100,6 +102,12 @@ const Registration = () => {
               toast.success("Registration successfully");
               navigate("/login");
               setLoader(false);
+            })
+            .then(()=>{
+              set(ref(db, 'users/' + auth.currentUser.uid), {
+                username: fullName,
+                email: email,
+              });
             })
             .catch((error) => {
               console.log(error);
