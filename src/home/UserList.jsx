@@ -3,13 +3,13 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import ProfilePicture from "../componentes/ProfilePicture";
 
 const UserList = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.userLoginInfo.userInfo);
   let [userList, setUserList] = useState([]);
   const [friendRequest, setFriendRequest] = useState([]);
-
 
   // user item stsrt
   useEffect(() => {
@@ -22,7 +22,6 @@ const UserList = () => {
         }
       });
       setUserList(users);
-      console.log(userList);
     });
   }, []);
 // user item end
@@ -45,7 +44,6 @@ const UserList = () => {
         request.push(item.val().receverId + item.val().senderId);
       });
       setFriendRequest(request);
-      console.log(request);
     });
   }, []);
 // friendRequest item end
@@ -65,7 +63,7 @@ const UserList = () => {
           <div key={i} className="flex justify-between items-center p-2">
             <div className=" flex gap-5">
               <div className="img">
-                <img src="" alt="" />
+                <ProfilePicture imgId={item.id}/>
               </div>
               <div>
                 <h1>{item.username}</h1>

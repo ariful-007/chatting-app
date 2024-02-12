@@ -45,7 +45,6 @@ const Navbar = () => {
         localStorage.removeItem("user");
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -62,7 +61,6 @@ const Navbar = () => {
     const reader = new FileReader();
     reader.onload = () => {
       setImage(reader.result);
-      console.log(reader.result);
     };
     reader.readAsDataURL(files[0]);
   };
