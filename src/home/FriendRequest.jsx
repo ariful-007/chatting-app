@@ -31,7 +31,7 @@ const FriendRequest = () => {
       setFriendRequestList(list);
     });
   }, []);
-
+// friend request accept list start
   const headelFriendRequest = (item) => {
     set(
       push(ref(db, "friend"), {
@@ -41,7 +41,7 @@ const FriendRequest = () => {
       })
     );
   };
-
+// friend request accept list end
   return (
     <div id="all-item">
       <div className="main">
