@@ -16,7 +16,6 @@ const FriendRequest = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.userLoginInfo.userInfo);
   const [friendRequestList, setFriendRequestList] = useState([]);
-  console.log(friendRequestList);
 
   useEffect(() => {
     const friendRequestRef = ref(db, "friendRequest");

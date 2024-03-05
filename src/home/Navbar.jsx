@@ -18,6 +18,7 @@ import {
   ref,
   uploadString,
 } from "firebase/storage";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const auth = getAuth();
@@ -90,7 +91,7 @@ const Navbar = () => {
         });
       }
     } else {
-      console.log("No user is currently signed in.");
+      toast.error("Please login first");
     }
   };
   getCropData();

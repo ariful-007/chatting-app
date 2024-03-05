@@ -51,7 +51,7 @@ const GroupList = () => {
    onValue(groupRef, (snapshot) => {
      const list = [];
      snapshot.forEach((item) => {
-       if (data.uid == item.val().adminId) {
+       if (data.uid != item.val().adminId) {
          list.push({...item.val(), id: item.key });
        }
      });
@@ -59,6 +59,26 @@ const GroupList = () => {
    });
  },[])
  // get group list end 
+//  handel join group list start
+ const handelJoinGroup = (item) => {
+   set(
+     push(ref(db, "groupJoinRequest"), {
+       groupId: item.id,
+       groupName: item.groupName,
+       groupIntro: item.groupIntro, 
+       adminName: item.adminName,
+       adminId: item.adminId,
+       userId:data.uid,
+       userName:data.displayName
+     }).then(()=>{
+       toast.success("Request sent");
+       setShow(false);
+       setGroupName('');
+       setGroupIntro(''); 
+     })
+   );
+ };
+//  handel join group list end
 
   return (
     <div id="all-item">
@@ -91,7 +111,7 @@ const GroupList = () => {
               <p>{item.groupIntro}</p> 
             </div>
           </div>
-          <button className="Button_v_2">Join</button> 
+          <button onClick={()=>handelJoinGroup(item)} className="Button_v_2">Join</button> 
         </div>
       );
     })

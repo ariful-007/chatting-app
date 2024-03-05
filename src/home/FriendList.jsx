@@ -60,9 +60,9 @@ const FriendList = () => {
           <BiDotsVerticalRounded />{" "}
         </p>
       </div>
-      {friendList.map((item) => {
+      {friendList.map((item,i) => {
         return (
-          <div key={item.id} className="flex justify-between items-center p-2">
+          <div key={i} className="flex justify-between items-center p-2">
             <div className=" flex gap-5">
               <div className="img">
                 <ProfilePicture imgId={data.uid == item.senderId ? item.receverId : item.senderId} />
