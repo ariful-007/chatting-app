@@ -22,9 +22,9 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const auth = getAuth();
+  const data = useSelector((state) => state.userLoginInfo.userInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const storage = getStorage();
 
   const [image, setImage] = useState("");
@@ -35,8 +35,6 @@ const Navbar = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  const data = useSelector((state) => state.userLoginInfo.userInfo);
 
   const heandelLogout = () => {
     signOut(auth)

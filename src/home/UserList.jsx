@@ -87,7 +87,7 @@ const UserList = () => {
             friendList.includes(data.uid + item.id) ? (
               <button className=" Button_v_2">Friend</button>
             ) : friendRequest.includes(item.id + data.uid) ||
-              friendRequest.includes(+data.uid + item.id) ? (
+              friendRequest.includes(data.uid + item.id) ? (
               <button className=" Button_v_2">Cencel</button>
             ) : (
               <button

@@ -25,9 +25,7 @@ const Home = () => {
       <Navbar />
       <div className="main_item">
         <div className="main_item-1">
-        
           <GroupList/>
-        
         </div>
 
         <div className="main_item-1">

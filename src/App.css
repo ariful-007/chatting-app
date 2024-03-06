@@ -151,15 +151,28 @@
 }
 
 #all-item  h1{
-  @apply text-xl font-bold text-gray-900 capitalize
+  @apply text-xl font-bold text-gray-900 capitalize 
 }
 
 
-
-
-
-
-
-
 /* =======all item list end======= */
+
+/* ======friend start====== */
+
+#friend .main{
+  @apply flex justify-between items-center bg-white rounded-md p-2 shadow-sm sticky top-0 left-0
+}
+#friend .main h2{
+  @apply text-2xl font-semibold capitalize text-sky-500 
+}
+
+#friend .img {
+  @apply w-[60px] h-[60px] rounded-full bg-sky-500 overflow-hidden
+}
+
+#friend  h1{
+  @apply text-xl font-bold text-gray-900 capitalize 
+}
+
+/* ======friend end====== */
 

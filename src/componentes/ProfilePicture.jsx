@@ -17,10 +17,6 @@ const ProfilePicture = ({imgId}) => {
     })
   }, [])
 
-
-
-
-  
   return (
     <div>
       <img src={profilePicture} alt="" />
