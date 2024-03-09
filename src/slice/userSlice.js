@@ -6,7 +6,7 @@ export const userSlice = createSlice({
     userInfo: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
   },
   reducers:{
-    userLoginInfo(state,action){
+    userLoginInfo:(state,action)=>{
       state.userInfo = action.payload
     }
   } 

@@ -1,15 +1,19 @@
 
 import React, { useEffect, useState } from "react";
-import { Button_v_2,} from "../componentes/Button";
-import { BiDotsVerticalRounded } from "react-icons/bi";
-import { getDatabase, onValue, push, ref, remove, set } from "firebase/database";
-import { useSelector } from "react-redux";
+import { getDatabase, onValue, ref,  } from "firebase/database";
+import { useDispatch, useSelector } from "react-redux";
 import ProfilePicture from "../componentes/ProfilePicture";
+import { activeCaht } from "../slice/ActiveSlice";
+
+
+
+
 
 const Friend = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.userLoginInfo.userInfo);
   const [friendList, setFriendList] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const friendRef = ref(db, "friend");
@@ -28,29 +32,17 @@ const Friend = () => {
   }, []);
 
 
-  // block list start
-  const handelBlock=(item)=>{
-    if(data.uid == item.senderId){
-      set(push(ref(db, "block")),{
-        block: item.receverName,
-        blockId: item.receverId,
-        blockBy: item.senderName,
-        blockById: item.senderId
-      }).then(()=>{
-        remove(ref(db, "friend/" + item.key))
-      })
+  // handel active Friend start
+  const handelActiveFriend =(item)=>{
+    if(item.receverId == data.uid){
+      dispatch(activeCaht({status:"single", id: item.senderId , name:item.senderName}))
+      localStorage.setItem("activeFriend", JSON.stringify({status:"single", id: item.senderId , name:item.senderName}))
     }else{
-      set(push(ref(db, "block")),{
-        block: item.senderName,
-        blockId: item.senderId,
-        blockBy: item.receverName,
-        blockById: item.receverId
-      }).then(()=>{
-        remove(ref(db, "friend/" + item.key))
-      })
+      dispatch(activeCaht({status:"single", id: item.receverId, name:item.receverName}))
+      localStorage.setItem("activeFriend", JSON.stringify({status:"single", id: item.receverId, name:item.receverName}))
     }
   }
-  // block list end
+  
 
   return (
     <div id="friend">
@@ -74,7 +66,7 @@ const Friend = () => {
               </div>
             </div>
             <div className=" flex gap-3">
-              <div onClick={()=>handelBlock(item)}><Button_v_2>Message</Button_v_2></div>
+              <div onClick={()=>handelActiveFriend(item)} className="Button_v_2 cursor-pointer">Message</div>
             </div>
           </div>
         );

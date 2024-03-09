@@ -133,7 +133,7 @@
   @apply flex flex-wrap justify-between items-center container mx-auto
 }
 .main_item .main_item-1{
-  @apply w-full h-[430px] bg-slate-300 overflow-y-scroll mb-3 border border-spacing-4  rounded-md sm:w-[50%] md:w-[100%] lg:w-[32%]
+  @apply w-full h-[290px] bg-slate-300 overflow-y-scroll mb-3 border border-spacing-4  rounded-md sm:w-[50%] md:w-[100%] lg:w-[32%]
 }
 
 /* =======home item end========= */

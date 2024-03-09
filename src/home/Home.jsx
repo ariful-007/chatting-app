@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Navbar from "../home/Navbar";
-import { BiDotsVerticalRounded } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import GroupList from "../home/GroupList";
