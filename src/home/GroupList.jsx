@@ -106,9 +106,9 @@ const GroupList = () => {
               
             </div>
             <div>
-            <h1>Admin:{item.adminName}</h1>
-              <h1>{item.groupName}</h1> 
-              <p>{item.groupIntro}</p> 
+            <h1>Admin:{item?.adminName}</h1>
+              <h1>{item?.groupName}</h1> 
+              <p>{item?.groupIntro}</p> 
             </div>
           </div>
           <button onClick={()=>handelJoinGroup(item)} className="Button_v_2">Join</button> 
