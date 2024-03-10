@@ -64,35 +64,27 @@ const Navbar = () => {
     reader.readAsDataURL(files[0]);
   };
 
+
   const getCropData = () => {
-    if (auth.currentUser) {
-      if (typeof cropperRef.current?.cropper !== "undefined") {
-        setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
-        console.log(cropData);
-        const storageRef = ref(storage, auth.currentUser.uid);
-        console.log(storageRef);
-        const message4 = cropperRef.current?.cropper
-          .getCroppedCanvas()
-          .toDataURL();
-          uploadString(storageRef, message4, "data_url").then((snapshot) => {
-          getDownloadURL(storageRef).then((downloadURL) => {
-            updateProfile(auth.currentUser,{
-              photoURL: downloadURL
-            })
-            dispatch(userLoginInfo({ ...data, photoURL: downloadURL }));
-            localStorage.setItem(
-              "user",
-              JSON.stringify({ ...data, photoURL: downloadURL })
-            );
-            setShowModal(false);
-          });
-        });
-      }
-    } else {
-      toast.error("Please login first");
+    if (typeof cropperRef.current?.cropper !== "undefined") {
+      setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
+      const storageRef = ref(storage, auth.currentUser.uid);
+      const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL();
+       uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+        //  console.log('Uploaded a data_url string!');
+        getDownloadURL(storageRef).then((downloadURL) => {
+          updateProfile(auth.currentUser, {
+            photoURL:downloadURL 
+          })
+          dispatch(userLoginInfo({...data, photoURL:downloadURL}))
+          localStorage.setItem("user",JSON.stringify({...data, photoURL:downloadURL}))
+          setShowModal(false)
+        })
+       });
     }
   };
-  getCropData();
+  getCropData()
+
 
   // react coppare end
 
@@ -106,7 +98,7 @@ const Navbar = () => {
                 {data?.displayName[0]}
               </h1>
             ) : (
-              <img src={data?.photoURL} alt="" />
+              <img src={data?.photoURL} />
             )}
 
             <div

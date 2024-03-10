@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
 import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-const img ="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_640.jpg";
 
 const Chatting = () => {
   const storage = getStorage();
@@ -62,7 +61,7 @@ const Chatting = () => {
   // handel messages end
 
   // handel image uploads start
-  const handelImage=(e)=>{
+const handelImage=(e)=>{
 const storageRef = sref(storage, e.target.files[0].name);
 const uploadTask = uploadBytesResumable(storageRef, e.target.files[0].name);
 uploadTask.on('state_changed', 
@@ -158,11 +157,12 @@ uploadTask.on('state_changed',
 
 
       {/* =======================input start=============================== */}
-      <div className=" w-full flex justify-between items-center sticky left-0 bottom-0 gap-2 bg-white">
+      <div className=" w-full flex justify-between items-center sticky top-[605px] left-0 bottom-0 gap-2 bg-white">
         <div className=" w-full flex justify-between bg-gray-200 rounded-lg gap-4 items-center">
-          <div className=" w-full">
+          <div className=" w-full ">
             <input
               onChange={(e)=>setMessage(e.target.value)}
+              value={message}
               type="text"
               placeholder="type a message"
               className="input border border-sky-400 px-3 py-1 rounded-lg outline-none w-full"

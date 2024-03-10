@@ -50,9 +50,9 @@ const FriendRequest = () => {
           <BiDotsVerticalRounded />{" "}
         </p>
       </div>
-      {friendRequestList.map((item,i) => {
+      {friendRequestList.map((item) => {
         return (
-          <div key={i} className="flex justify-between items-center p-2">
+          <div key={item.id} className="flex justify-between items-center p-2">
             <div className=" flex gap-5">
               <div className="img">
                 <ProfilePicture imgId={item?.senderId} />

@@ -19,7 +19,7 @@ const FriendList = () => {
           data.uid == item.val().receverId ||
           data.uid == item.val().senderId
         ) {
-          list.push({ ...item.val(), key: item.key });
+          list.push({ ...item.val(), id: item.key });
         }
       });
       setFriendList(list);
@@ -36,7 +36,7 @@ const FriendList = () => {
         blockBy: item.senderName,
         blockById: item.senderId
       }).then(()=>{
-        remove(ref(db, "friend/" + item.key))
+        remove(ref(db, "friend/" + item.id))
       })
     }else{
       set(push(ref(db, "block")),{
@@ -45,7 +45,7 @@ const FriendList = () => {
         blockBy: item.receverName,
         blockById: item.receverId
       }).then(()=>{
-        remove(ref(db, "friend/" + item.key))
+        remove(ref(db, "friend/" + item.id))
       })
     }
   }
@@ -60,9 +60,9 @@ const FriendList = () => {
           <BiDotsVerticalRounded />{" "}
         </p>
       </div>
-      {friendList.map((item,i) => {
+      {friendList.map((item) => {
         return (
-          <div key={i} className="flex justify-between items-center p-2">
+          <div key={item.id} className="flex justify-between items-center p-2">
             <div className=" flex gap-5">
               <div className="img">
                 <ProfilePicture imgId={data.uid == item.senderId ? item.receverId : item.senderId} />
@@ -70,9 +70,9 @@ const FriendList = () => {
               <div>
                 {
                   data.uid == item.senderId?
-                  <h1>{item.receverName}</h1>
+                  <h1>{item?.receverName}</h1>
                   :
-                  <h1>{item.senderName}</h1>
+                  <h1>{item?.senderName}</h1>
                 }
                 <h2>Hello...</h2>
               </div>
