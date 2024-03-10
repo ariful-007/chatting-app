@@ -75,15 +75,15 @@ const UserList = () => {
           <div key={i} className="flex justify-between items-center p-2">
             <div className=" flex gap-5">
               <div className="img">
-                <ProfilePicture imgId={item.id} />
+                <ProfilePicture imgId={item?.id} />
               </div>
               <div>
-                <h1>{item.username}</h1>
-                <p>{item.email}</p>
+                <h1>{item?.username}</h1>
+                <p>{item?.email}</p>
               </div>
             </div>
 
-            {friendList.includes(item.id + data.uid) ||
+            {friendList.includes(item?.id + data.uid) ||
             friendList.includes(data.uid + item.id) ? (
               <button className=" Button_v_2">Friend</button>
             ) : friendRequest.includes(item.id + data.uid) ||

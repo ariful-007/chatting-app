@@ -89,12 +89,6 @@ uploadTask.on('state_changed',
 );
   }
   // handel image uploads end
-
-
-
-
-
-
   return (
     <div className=" relative h-[605px] overflow-y-scroll rounded-lg px-6 border-2 border-sky-400 mt-1">
       {/* =====identy start======= */}
@@ -162,43 +156,6 @@ uploadTask.on('state_changed',
         <h1>Group</h1>
       }
 
-
-
-      {/* =====auido recive message start======= */}
-      {/* <div className=" text-left">
-        <div className=" inline-block p-1 rounded-md bg-slate-300 mt-2">
-          <audio controls />
-        </div>
-        <p className=" text-gray-400">12:45pm</p>
-      </div> */}
-
-      {/* =====auido recive message end======= */}
-      {/* =====auido send message start======= */}
-      {/* <div className=" text-right my-5">
-        <div className=" inline-block p-1  rounded-md bg-sky-400 mt-2">
-          <audio controls />
-        </div>
-        <p className=" text-gray-400">12:45pm</p>
-      </div> */}
-      {/* =====auido send message end======= */}
-
-      {/* =====video recive message start======= */}
-      {/* <div className=" text-left">
-        <div className=" inline-block p-1 rounded-md bg-slate-300 mt-2">
-          <video controls />
-        </div>
-        <p className=" text-gray-400">12:45pm</p>
-      </div> */}
-
-      {/* =====video recive message end======= */}
-      {/* =====video send message start======= */}
-      {/* <div className=" text-right my-5">
-        <div className=" inline-block p-1  rounded-md bg-sky-400 mt-2">
-          <video controls />
-        </div>
-        <p className=" text-gray-400">12:45pm</p>
-      </div> */}
-      {/* =====video send message end======= */}
 
       {/* =======================input start=============================== */}
       <div className=" w-full flex justify-between items-center sticky left-0 bottom-0 gap-2 bg-white">
