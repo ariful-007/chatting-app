@@ -5,8 +5,9 @@ import { FaImages } from "react-icons/fa";
 import { LuCamera } from "react-icons/lu";
 import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { getDatabase, onValue, push, ref, set } from "firebase/database";
-import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getDownloadURL, getStorage, uploadBytesResumable,ref as sref } from "firebase/storage";
+import {getDatabase, onValue, push, ref, set } from "firebase/database";
+
 
 
 const Chatting = () => {
@@ -16,8 +17,6 @@ const Chatting = () => {
   const activeChatSlice = useSelector((state) => state.activeCahtSlice);
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  console.log(messageList);
-
 
   // handel messages start
   const handelMessgesSend = () => {
@@ -57,7 +56,7 @@ const Chatting = () => {
       });
       setMessageList(list);
     });
-  },[activeChatSlice.active.id]);
+  },[activeChatSlice.active?.id]);
   // handel messages end
 
   // handel image uploads start
@@ -105,7 +104,7 @@ uploadTask.on('state_changed',
       {/* =====identy end======= */}
 
       {
-        activeChatSlice.active.status == "single"?
+        activeChatSlice.active?.status == "single"?
         (
           messageList.map((item,i)=>{
             return(

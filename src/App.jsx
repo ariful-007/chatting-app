@@ -9,7 +9,6 @@ import Home from './home/Home';
 import Chat from './Pages/Chat';
 
 
-
 function App() {
   const router = createBrowserRouter([
     {

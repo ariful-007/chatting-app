@@ -13,9 +13,9 @@ const ProfilePicture = ({imgId}) => {
       setProfilePicture(url)
     })
     .catch((error)=>{
-      console.log(error)
+      
     })
-  }, [])
+  }, [imgId])
 
   return (
     <div>
