@@ -5,10 +5,8 @@ import { FaImages } from "react-icons/fa";
 import { LuCamera } from "react-icons/lu";
 import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { getDownloadURL, getStorage, uploadBytesResumable,ref as sref } from "firebase/storage";
-import {getDatabase, onValue, push, ref, set } from "firebase/database";
-
-
+import {getDownloadURL,getStorage,uploadBytesResumable,ref as sref,} from "firebase/storage";
+import { getDatabase, onValue, push, ref, set } from "firebase/database";
 
 const Chatting = () => {
   const storage = getStorage();
@@ -28,7 +26,10 @@ const Chatting = () => {
         whoReceverName: activeChatSlice.active.name,
         message: message,
         date: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}, ${
-          new Date().getHours()%12||12}:${new Date().getMinutes()} ${new Date().getHours()>=12? "PM" : "AM"}`,
+          new Date().getHours() % 12 || 12
+        }:${new Date().getMinutes()} ${
+          new Date().getHours() >= 12 ? "PM" : "AM"
+        }`,
       })
         .then(() => {
           console.log("geche");
@@ -49,43 +50,49 @@ const Chatting = () => {
         if (
           (item.val().whoSenderId == data.uid &&
             item.val().whoReceverId == activeChatSlice.active.id) ||
-          (item.val().whoReceverId == data.uid && item.val().whoSenderId == activeChatSlice.active.id)
+          (item.val().whoReceverId == data.uid &&
+            item.val().whoSenderId == activeChatSlice.active.id)
         ) {
           list.push(item.val());
         }
       });
       setMessageList(list);
     });
-  },[activeChatSlice.active?.id]);
+  }, [activeChatSlice.active?.id]);
   // handel messages end
 
   // handel image uploads start
-const handelImage=(e)=>{
-const storageRef = sref(storage, e.target.files[0].name);
-const uploadTask = uploadBytesResumable(storageRef, e.target.files[0].name);
-uploadTask.on('state_changed', 
-  (snapshot) => {
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-  }, 
-  (error) => {
-    console.log(error);
-  }, 
-  () => {
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      set(push(ref(db, "singleMessage")), {
-        whoSenderId: data.uid,
-        whoSenderName: data.displayName,
-        whoReceverId: activeChatSlice.active.id,
-        whoReceverName: activeChatSlice.active.name,
-        img: downloadURL,
-        date: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}, ${
-          new Date().getHours()%12||12}:${new Date().getMinutes()} ${new Date().getHours()>=12? "PM" : "AM"}`,
-      })
-    });
-  }
-);
-  }
+  const handelImage = (e) => {
+    const storageRef = sref(storage, e.target.files[0].name);
+    const uploadTask = uploadBytesResumable(storageRef, e.target.files[0].name);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          set(push(ref(db, "singleMessage")), {
+            whoSenderId: data.uid,
+            whoSenderName: data.displayName,
+            whoReceverId: activeChatSlice.active.id,
+            whoReceverName: activeChatSlice.active.name,
+            img: downloadURL,
+            date: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}, ${
+              new Date().getHours() % 12 || 12
+            }:${new Date().getMinutes()} ${
+              new Date().getHours() >= 12 ? "PM" : "AM"
+            }`,
+          });
+        });
+      }
+    );
+  };
   // handel image uploads end
   return (
     <div className=" relative h-[605px] overflow-y-scroll rounded-lg px-6 border-2 border-sky-400 mt-1">
@@ -103,64 +110,50 @@ uploadTask.on('state_changed',
       </div>
       {/* =====identy end======= */}
 
-      {
-        activeChatSlice.active?.status == "single"?
-        (
-          messageList.map((item,i)=>{
-            return(
-              item.whoSenderId == data.uid ?
-              (
-                item.message?
-                <div key={i} className=" text-right my-5">
+      {activeChatSlice.active?.status == "single" ? (
+        messageList.map((item, i) => {
+          return item.whoSenderId == data.uid ? (
+            item.message ? (
+              <div key={i} className=" text-right my-5">
                 <div className=" inline-block px-3 py-1 rounded-md bg-sky-400 mt-2">
                   <p className=" text-black text-left">{item.message}</p>
                 </div>
                 <p className=" text-gray-400">{item.date}</p>
-                </div>
-                :
-                <div className=" text-right my-5">
+              </div>
+            ) : (
+              <div className=" text-right my-5">
                 <div className=" inline-block p-1  rounded-md bg-sky-400 mt-2">
                   <ModalImage small={item.img} large={item.img} />
                 </div>
                 <p className=" text-gray-400">{item.date}</p>
-                </div>
-              )
-            :
-            (
-              item.message?
-              <div key={i} className=" text-left">
+              </div>
+            )
+          ) : item.message ? (
+            <div key={i} className=" text-left">
               <div className=" inline-block px-3 py-1 rounded-md bg-slate-300 mt-2">
-                <p className=" text-left">
-                {item.message} 
-                </p>
+                <p className=" text-left">{item.message}</p>
               </div>
               <p className=" text-gray-400">{item.date}</p>
             </div>
-            :
+          ) : (
             <div className=" text-right my-5">
-                <div className=" inline-block p-1  rounded-md bg-slate-300 mt-2">
-                  <ModalImage small={item.img} large={item.img} />
-                </div>
-                <p className=" text-gray-400">{item.date}</p>
+              <div className=" inline-block p-1  rounded-md bg-slate-300 mt-2">
+                <ModalImage small={item.img} large={item.img} />
+              </div>
+              <p className=" text-gray-400">{item.date}</p>
             </div>
-
-            )
-            
-
-            )
-          })
-        )
-        :
+          );
+        })
+      ) : (
         <h1>Group</h1>
-      }
-
+      )}
 
       {/* =======================input start=============================== */}
       <div className=" w-full flex justify-between items-center sticky top-[605px] left-0 bottom-0 gap-2 bg-white">
         <div className=" w-full flex justify-between bg-gray-200 rounded-lg gap-4 items-center">
           <div className=" w-full ">
             <input
-              onChange={(e)=>setMessage(e.target.value)}
+              onChange={(e) => setMessage(e.target.value)}
               value={message}
               type="text"
               placeholder="type a message"
@@ -175,7 +168,7 @@ uploadTask.on('state_changed',
               <MdOutlineKeyboardVoice className=" text-2xl text-black " />
             </button>
             <label>
-              <input onClick={handelImage}  type="file" className="hidden" />
+              <input onClick={handelImage} type="file" className="hidden" />
               <FaImages className=" text-2xl text-black mr-2" />
             </label>
           </div>

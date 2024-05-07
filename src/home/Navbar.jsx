@@ -70,7 +70,7 @@ const Navbar = () => {
       setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
       const storageRef = ref(storage, auth.currentUser.uid);
       const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL();
-       uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+      uploadString(storageRef, message4, 'data_url').then((snapshot) => {
         //  console.log('Uploaded a data_url string!');
         getDownloadURL(storageRef).then((downloadURL) => {
           updateProfile(auth.currentUser, {
@@ -80,7 +80,7 @@ const Navbar = () => {
           localStorage.setItem("user",JSON.stringify({...data, photoURL:downloadURL}))
           setShowModal(false)
         })
-       });
+      });
     }
   };
   getCropData()
